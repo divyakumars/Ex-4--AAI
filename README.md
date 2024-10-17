@@ -34,7 +34,8 @@ alpha [0,:] = initial_probabilities *emission_matrix[:, observed_sequence [0]]
 
 for t in range(1,len(observed_sequence)):
   for j in range(len(initial_probabilities)):
-    alpha[t,j]=emisson_matrix[j,observed_sequence[t]]*np.sum(alpha[t-1,:]*transition_matrix[:,j])
+    alpha[t,j]=emisson_matrix[j,observed_sequence[t]]
+*np.sum(alpha[t-1,:]*transition_matrix[:,j])
 
 probability=np.sum(alpha[-1,:])
 print("The probability of the observed sequence is:",probability)
